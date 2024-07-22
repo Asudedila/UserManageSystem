@@ -66,7 +66,7 @@ export default function UpdateUserForm(props) {
             surname: surname,
             gender: gender,
             role: role,
-            birth_date: birth_date.toISOString().split('T')[0] // Tarihi doğru formatta gönderiyoruz
+            birth_date: birth_date.toISOString().split('T')[0]
         };
         onUpdateUser(updatedUser, id);
         onHide();
