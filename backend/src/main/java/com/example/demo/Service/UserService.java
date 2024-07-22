@@ -35,18 +35,18 @@ public class UserService {
         LoginRequest resp = new LoginRequest();
         if( userRepository.existsByTcAndDeleted(req.getTc(),"0")){
             resp.setMessage("User is already registered");
-        }
-        User user = new User();
-        user.setTc(req.getTc());
-        user.setName(req.getName());
-        user.setSurname(req.getSurname());
-        user.setGender(req.getGender());
-        user.setBirth_date(req.getBirth_date());
-        user.setPassword(passwordEncoder.encode(req.getPassword()));
-        user.setUsername(req.getUsername());
-        Role role = roleService.getRoleByName(req.getRole());
-        user.setRole(role);
-        userRepository.save(user);
+        }else{
+            User user = new User();
+            user.setTc(req.getTc());
+            user.setName(req.getName());
+            user.setSurname(req.getSurname());
+            user.setGender(req.getGender());
+            user.setBirth_date(req.getBirth_date());
+            user.setPassword(passwordEncoder.encode(req.getPassword()));
+            user.setUsername(req.getUsername());
+            Role role = roleService.getRoleByName(req.getRole());
+            user.setRole(role);
+            userRepository.save(user);}
         return resp;
     }
 
